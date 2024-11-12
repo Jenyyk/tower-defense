@@ -14,12 +14,13 @@ public class Path extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public int[][] pathCoordinates = {
-    {50, 50}, {100, 50}, {100, 200}, {450, 200}, {450, 780}
+    {50, 50}, {100, 50}, {100, 200}, {400, 300}, {450, 780}
     };
     public void act()
     {
         illustrate_path(this.pathCoordinates);
     }
+    
     private void illustrate_path(int[][] pathCoordinates) {
         ArrayList<Integer> xs = new ArrayList<>();
         ArrayList<Integer> ys = new ArrayList<>();
