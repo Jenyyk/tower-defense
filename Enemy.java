@@ -1,25 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Enemy here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Enemy extends Actor
 {
-    /**
-     * Act - do whatever the Enemy wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private Path path;
     private int pathStage = 0;
     public Enemy(Path path) {
         this.path = path;
     }
     
+    // precise positions for diagonal moving capability
     private float preciseX = 0;
     private float preciseY = 0;
+    // can be set to anything in children
     public float moveSpeed = 1;
     
     public void act()
@@ -37,6 +29,7 @@ public class Enemy extends Actor
             return;
         }
         
+        // move in precise units, with a lot of Math
         turnTowards(targetX, targetY);
         int rotation = getRotation();
         this.preciseX += moveSpeed * Math.cos(Math.toRadians(rotation));

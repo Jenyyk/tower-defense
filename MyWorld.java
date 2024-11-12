@@ -3,8 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class MyWorld here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jenyyk
  */
 public class MyWorld extends World
 {
@@ -16,10 +15,15 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 800, 1);
+        super(800, 800, 1, false);
+        // creates a path for all enemies to follow
         Path global_path = new Path();
         addObject(global_path, 400, 400);
-        addObject(new Enemy(global_path), 10, 10);
         
+        // debug
+        addObject(new SingleShot(this), 140, 150);
+        addObject(new Shotgun(this), 300, 300);
+        
+        addObject(new Enemy(global_path), 0, 0);
     }
 }

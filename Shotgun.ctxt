@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Shotgun
+comment1.params=world
+comment1.target=Shotgun(MyWorld)
+comment2.params=
+comment2.target=void\ attack()
+numComments=3
