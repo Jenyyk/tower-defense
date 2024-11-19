@@ -4,22 +4,30 @@ public class SingleShot extends Tower
 {
     private int range = 140;
     private int cooldown = 140;
+    private float damage = 40;
     public SingleShot(MyWorld world) {
         super(world);
+        renderSelf();
     }
+    // attacks closest enemy in range
     public void attack() {
         // gets all enemies in range
-        java.util.List<Enemy> inRange = getNeighbours(this.range, true, Enemy.class);
+        java.util.List<Enemy> inRange = getObjectsInRange(this.range, Enemy.class);
         if (inRange.isEmpty()) { return; }
+        // gets closest enemy
         Enemy closest = inRange.get(0);
         for (Enemy target : inRange) {
             if (getDistanceTo(closest) > getDistanceTo(target)) {
                 closest = target;
             }
         }
+        Enemy target = (Enemy) closest;
+        // faces toward target
+        turnTowards(target.getX(), target.getY());
+        setRotation(getRotation() + 150);
         // creates a new bullet object and launches it
-        createBullet((Enemy) closest);
-        sleepFor(cooldown);
+        createBullet(target, this.damage);
+        sleepFor(this.cooldown);
     }
     
     // quick function to get distance to another object
@@ -28,4 +36,6 @@ public class SingleShot extends Tower
         int dy = enemy.getY() - getY();
         return Math.sqrt(dx * dx + dy * dy);  // Pythagorean theorem
     }
+    
+    public int getRange() { return range; }
 }

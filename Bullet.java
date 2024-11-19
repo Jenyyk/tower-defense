@@ -2,15 +2,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Bullet extends Actor
 {
+    private float damage;
     private Enemy target;
-    public Bullet(Enemy target, int spawnX, int spawnY) {
+    public Bullet(Enemy target, float damage, int spawnX, int spawnY) {
         this.target = target;
+        // initializes precise position
+        this.preciseX = (float) spawnX;
+        this.preciseY = (float) spawnY;
+        // sets bullet damage
+        this.damage = damage;
+        // renders bullet
         GreenfootImage img = new GreenfootImage(20, 5);
         img.setColor(Color.RED);
         img.fill();
         setImage(img);
-        this.preciseX = (float) spawnX;
-        this.preciseY = (float) spawnY;
     }
     private float preciseX;
     private float preciseY;
@@ -22,6 +27,7 @@ public class Bullet extends Actor
         this.preciseY += moveSpeed * Math.sin(Math.toRadians(rotation));
         setLocation((int) preciseX, (int) preciseY);
         if (intersects(target)) {
+            target.health -= damage;
             getWorld().removeObject(this);
         }
         this.moveSpeed += 0.05;

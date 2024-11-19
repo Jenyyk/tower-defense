@@ -4,4 +4,6 @@ comment1.params=world
 comment1.target=Shotgun(MyWorld)
 comment2.params=
 comment2.target=void\ attack()
-numComments=3
+comment3.params=
+comment3.target=int\ getRange()
+numComments=4

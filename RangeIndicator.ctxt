@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=RangeIndicator
+comment1.params=targetTower
+comment1.target=RangeIndicator(Tower)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

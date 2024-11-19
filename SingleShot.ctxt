@@ -6,4 +6,6 @@ comment2.params=
 comment2.target=void\ attack()
 comment3.params=enemy
 comment3.target=double\ getDistanceTo(Enemy)
-numComments=4
+comment4.params=
+comment4.target=int\ getRange()
+numComments=5

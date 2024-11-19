@@ -14,8 +14,14 @@ public class Enemy extends Actor
     // can be set to anything in children
     public float moveSpeed = 1;
     
+    public float health = 200;
     public void act()
-    {
+    {   
+        // handle dying
+        if (this.health <= 0) {
+            getWorld().removeObject(this);
+            return;
+        }
         // gets coordinate array from path
         int[][] coordinates = path.pathCoordinates;
         // cancels if reached end

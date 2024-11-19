@@ -25,5 +25,11 @@ public class MyWorld extends World
         addObject(new Shotgun(this), 300, 300);
         
         addObject(new Enemy(global_path), 0, 0);
+        addObject(new TowerManager(this), -10, -10);
+        
+        // will be moved to tower manager
+        for (Tower tower : getObjects(Tower.class)) {
+            addObject(new RangeIndicator(tower), tower.getX(), tower.getY());
+        }
     }
 }
