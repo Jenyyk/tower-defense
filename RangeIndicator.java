@@ -4,6 +4,7 @@ public class RangeIndicator extends Actor
 {
     private Tower targetTower;
     public RangeIndicator(Tower targetTower) {
+        // creates image as big as target towers range
         GreenfootImage img = getImage();
         int targetRange = targetTower.getRange() * 2;
         img.scale(targetRange, targetRange);
@@ -11,6 +12,7 @@ public class RangeIndicator extends Actor
         setLocation(targetTower.getX(), targetTower.getY());
         this.targetTower = targetTower;
     }
+    // moves to owner tower
     public void act() {
         setLocation(targetTower.getX(), targetTower.getY());
     }

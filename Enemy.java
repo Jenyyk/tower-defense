@@ -4,8 +4,10 @@ public class Enemy extends Actor
 {
     private Path path;
     private int pathStage = 0;
-    public Enemy(Path path) {
+    private TowerManager manager;
+    public Enemy(Path path, TowerManager manager) {
         this.path = path;
+        this.manager = manager;
     }
     
     // precise positions for diagonal moving capability
@@ -15,10 +17,12 @@ public class Enemy extends Actor
     public float moveSpeed = 1;
     
     public float health = 200;
+    private int worth = 50;
     public void act()
     {   
         // handle dying
         if (this.health <= 0) {
+            manager.money += worth;
             getWorld().removeObject(this);
             return;
         }

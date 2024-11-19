@@ -21,11 +21,18 @@ public class Bullet extends Actor
     private float preciseY;
     private float moveSpeed = (float) 1.5;
     public void act() {
+        // deletes self if target died
+        if (target == null || target.getWorld() == null) {
+            getWorld().removeObject(this);
+            return;
+        }
+        // continuously moves towards target
         turnTowards(target.getX(), target.getY());
         int rotation = getRotation();
         this.preciseX += moveSpeed * Math.cos(Math.toRadians(rotation));
         this.preciseY += moveSpeed * Math.sin(Math.toRadians(rotation));
         setLocation((int) preciseX, (int) preciseY);
+        // if hit target, removes some health, and removes self
         if (intersects(target)) {
             target.health -= damage;
             getWorld().removeObject(this);

@@ -20,16 +20,8 @@ public class MyWorld extends World
         Path global_path = new Path();
         addObject(global_path, 400, 400);
         
-        // debug
-        addObject(new SingleShot(this), 140, 150);
-        addObject(new Shotgun(this), 300, 300);
-        
-        addObject(new Enemy(global_path), 0, 0);
-        addObject(new TowerManager(this), -10, -10);
-        
-        // will be moved to tower manager
-        for (Tower tower : getObjects(Tower.class)) {
-            addObject(new RangeIndicator(tower), tower.getX(), tower.getY());
-        }
+        TowerManager manager = new TowerManager(this);
+        addObject(manager, -10, -10);
+        addObject(new Enemy(global_path, manager), 0, 0);
     }
 }

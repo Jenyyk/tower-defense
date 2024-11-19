@@ -4,4 +4,6 @@ comment1.params=world
 comment1.target=TowerManager(MyWorld)
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=type
+comment3.target=void\ makeTower(java.lang.String)
+numComments=4
