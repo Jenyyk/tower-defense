@@ -36,7 +36,7 @@ public class Spawner extends Actor
     
     private Enemy createEnemy(int wave) {
         Enemy enemy;
-        int random = (int) Math.min(Math.floor(Math.random()* (wave / 2)), 2);
+        int random = (int) Math.min(Math.floor(Math.random()* (wave / 3)), 3);
         switch (random) {
             case 0:
                 enemy = new Slime(path, manager);
@@ -46,6 +46,9 @@ public class Spawner extends Actor
                 break;
             case 2:
                 enemy = new Knight(path, manager);
+                break;
+            case 3:
+                enemy = new Ghost(path, manager);
                 break;
             default:
                 enemy = new Slime(path, manager);

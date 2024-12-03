@@ -4,7 +4,7 @@ public class SingleShot extends Tower
 {
     private int range = 140;
     private int cooldown = 140;
-    private float damage = 50;
+    private float damage = 80;
     private int price = 200;
     public SingleShot(MyWorld world) {
         super(world);

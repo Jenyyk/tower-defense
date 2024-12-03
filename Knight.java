@@ -5,8 +5,8 @@ public class Knight extends Enemy
     public Knight(Path path, TowerManager manager) {
         super(path, manager);
         this.moveSpeed = (float) 0.8;
-        this.health = 200;
-        this.worth = 200;
+        this.health = 600;
+        this.worth = 300;
         this.size = 60;
         GreenfootImage img = getImage();
         img.scale(size, size);
