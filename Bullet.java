@@ -21,7 +21,7 @@ public class Bullet extends Actor
     private float preciseY;
     private float moveSpeed = (float) 1.5;
     public void act() {
-        // deletes self if target died
+        // prevents crashing from target dying before bullet reaches it
         if (target == null || target.getWorld() == null) {
             getWorld().removeObject(this);
             return;
@@ -32,11 +32,13 @@ public class Bullet extends Actor
         this.preciseX += moveSpeed * Math.cos(Math.toRadians(rotation));
         this.preciseY += moveSpeed * Math.sin(Math.toRadians(rotation));
         setLocation((int) preciseX, (int) preciseY);
-        // if hit target, removes some health, and removes self
+        // removes health on target, based on own damage
         if (intersects(target)) {
             target.health -= damage;
             getWorld().removeObject(this);
         }
+        // ramp up speed to catch fast enemies
+        // otherwise bullets would never hit
         this.moveSpeed += 0.05;
     }
 }

@@ -4,7 +4,8 @@ public class SingleShot extends Tower
 {
     private int range = 140;
     private int cooldown = 140;
-    private float damage = 40;
+    private float damage = 50;
+    private int price = 200;
     public SingleShot(MyWorld world) {
         super(world);
         renderSelf();
@@ -37,5 +38,6 @@ public class SingleShot extends Tower
         return Math.sqrt(dx * dx + dy * dy);  // Pythagorean theorem
     }
     
-    public int getRange() { return range; }
+    public int getRange() { return this.range; }
+    public int getPrice() { return this.price; }
 }

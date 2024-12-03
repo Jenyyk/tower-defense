@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Spawner
+comment1.params=world\ path\ manager_tower
+comment1.target=Spawner(MyWorld,\ Path,\ TowerManager)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=wave
+comment3.target=Enemy\ createEnemy(int)
+numComments=4

@@ -1,17 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MyWorld here.
+ * World
  * 
  * @author Jenyyk
  */
 public class MyWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -20,8 +15,17 @@ public class MyWorld extends World
         Path global_path = new Path();
         addObject(global_path, 400, 400);
         
-        TowerManager manager = new TowerManager(this);
-        addObject(manager, -10, -10);
-        addObject(new Enemy(global_path, manager), 0, 0);
+        // create and add the managers for towers and enemies
+        TowerManager manager_tower = new TowerManager(this);
+        addObject(manager_tower, -10, -10);
+        Spawner spawner = new Spawner(this, global_path, manager_tower);
+        addObject(spawner, -10, -10);
+        
+        // important in order to detect hovering over towers
+        // used for the opacity of range indicators
+        setPaintOrder(Tower.class);
+        
+        // spawns one enemy to start the game
+        addObject(new Enemy(global_path, manager_tower), 0, 0);
     }
 }

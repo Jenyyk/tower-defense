@@ -7,13 +7,13 @@ public class TowerManager extends Actor
     public TowerManager(MyWorld world) {
         this.world = world;
         // create buying buttons
-        world.addObject(new Button("singleShot", this), 50, 750);
-        world.addObject(new Button("shotgun", this), 150, 750);
+        world.addObject(new Button("singleShot", 200, this), 50, 750);
+        world.addObject(new Button("shotgun", 300, this), 150, 750);
     }
     public void act()
     {
         world.showText("Money: " + money, 50, 20);
-        // if in building process, waits for inputs
+        // calls building tower while in building process
         if (buildingTower) {
             makeTower(lastType);
         }
@@ -21,18 +21,11 @@ public class TowerManager extends Actor
     // check if in the building process
     private boolean buildingTower = false;
     private String lastType;
+    private BuildingIndicator indicator = null;
     // method for building towers
     public void makeTower(String type) {
-        if (money < 200) { return; }
-        buildingTower = true;
-        lastType = type;
-        // waits for mouse click
-        if (!Greenfoot.mousePressed(null)) {
-            return;
-        }
-        buildingTower = false;
-        // creates tower based on type
         Tower tower;
+        // hardcoded switch for types
         switch (type) {
             case "shotgun":
                 tower = new Shotgun(world);
@@ -43,10 +36,31 @@ public class TowerManager extends Actor
             default:
                 return;
         }
-        // creates tower and range indicator
+        if (money < tower.getPrice()) { return; }
+        // enters building process, which makes it run forever until a tower is built
+        buildingTower = true;
+        // creates an indicator if it does not exist
+        if (indicator == null) { 
+            indicator = new BuildingIndicator(type);
+            world.addObject(indicator, -10, -10);
+        }
+        lastType = type;
+        // is called over and over until mouse is clicked
+        if (!Greenfoot.mousePressed(null)) {
+            return;
+        }
+        // exit building process to stop calling this function
+        buildingTower = false;
+        world.removeObject(indicator);
+        indicator = null;
+        
+        // creates tower and range indicator objects
+        // snaps them to a 50*50 grid
         MouseInfo mouse = Greenfoot.getMouseInfo();
-        world.addObject(tower, mouse.getX(), mouse.getY());
+        double x = (Math.round(mouse.getX()/ 50) + 0.5) * 50;
+        double y = (Math.round(mouse.getY() / 50) + 0.5) * 50;
+        world.addObject(tower, (int) x, (int) y);
         world.addObject(new RangeIndicator(tower), 0, 0);
-        money -= 200;
+        money -= tower.getPrice();
     }
 }

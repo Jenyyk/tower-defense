@@ -14,6 +14,20 @@ public class RangeIndicator extends Actor
     }
     // moves to owner tower
     public void act() {
+        // always move to tower
+        // realistically only needs to be called once, but how do i implement that??
         setLocation(targetTower.getX(), targetTower.getY());
+        // only visible if the tower is hovered
+        if (Greenfoot.mouseMoved(targetTower)) {
+            setOpacity(255);
+        }
+        if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(targetTower)) {
+            setOpacity(0);
+        }
+    }
+    private void setOpacity(int opacity) {
+        GreenfootImage img = getImage();
+        img.setTransparency(opacity);
+        setImage(img);
     }
 }

@@ -5,6 +5,7 @@ public class Shotgun extends Tower
     private int range = 100;
     private int cooldown = 50;
     private float damage = 20;
+    public int price = 300;
     public Shotgun(MyWorld world) {
         super(world);
         renderSelf();
@@ -17,5 +18,6 @@ public class Shotgun extends Tower
         sleepFor(this.cooldown);
     }
     
-    public int getRange() { return range; }
+    public int getRange() { return this.range; }
+    public int getPrice() { return this.price; }
 }

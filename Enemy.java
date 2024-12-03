@@ -13,11 +13,12 @@ public class Enemy extends Actor
     // precise positions for diagonal moving capability
     private float preciseX = 0;
     private float preciseY = 0;
-    // can be set to anything in children
-    public float moveSpeed = 1;
     
-    public float health = 200;
-    private int worth = 50;
+    // can be set to anything in children
+    protected float moveSpeed = 1;
+    protected float health = 50;
+    protected int worth = 50;
+    protected int size = 30;
     public void act()
     {   
         // handle dying

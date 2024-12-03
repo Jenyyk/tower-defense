@@ -4,4 +4,6 @@ comment1.params=targetTower
 comment1.target=RangeIndicator(Tower)
 comment2.params=
 comment2.target=void\ act()
-numComments=3
+comment3.params=opacity
+comment3.target=void\ setOpacity(int)
+numComments=4

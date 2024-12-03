@@ -9,9 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Button extends Actor
 {
     private int scale = 40;
-    private TowerManager manager;
     private String type;
-    public Button(String type, TowerManager manager) {
+    private int price;
+    private TowerManager manager;
+    public Button(String type, int price, TowerManager manager) {
         // creates image and outline
         GreenfootImage img = new GreenfootImage("images/" + type + ".png");
         img.scale(scale, scale);
@@ -19,13 +20,15 @@ public class Button extends Actor
         int[] ys = {0, 0, scale - 1, scale - 1};
         img.drawPolygon(xs, ys, 4);
         setImage(img);
+        
+        this.price = price;
         this.manager = manager;
         this.type = type;
     }
     public void act()
     {
-        // checks if was clicked
-        ((MyWorld) getWorld()).showText("BUY\n\n200", getX(), getY());
+        ((MyWorld) getWorld()).showText("BUY\n\n" + price, getX(), getY());
+        // waits until clicked, then starts building process in tower manager
         if (Greenfoot.mouseClicked(this)) {
             manager.makeTower(type);
         }

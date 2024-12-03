@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Knight
+comment1.params=path\ manager
+comment1.target=Knight(Path,\ TowerManager)
+numComments=2

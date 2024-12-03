@@ -8,4 +8,6 @@ comment3.params=enemy
 comment3.target=double\ getDistanceTo(Enemy)
 comment4.params=
 comment4.target=int\ getRange()
-numComments=5
+comment5.params=
+comment5.target=int\ getPrice()
+numComments=6
