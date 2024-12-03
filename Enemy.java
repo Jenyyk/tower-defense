@@ -34,8 +34,11 @@ public class Enemy extends Actor
         // gets target X and Y coordinates
         int targetX = coordinates[pathStage][0];
         int targetY = coordinates[pathStage][1];
-        // moves on to next stage if finished
-        if (getX() == targetX && getY() == targetY) {
+        // check whether close enough
+        // prevents high speed enemies from getting stuck on points
+        int deltaX = Math.abs(getX() - targetX);
+        int deltaY = Math.abs(getY() - targetY);
+        if (deltaX <= 2 && deltaY <= 2) {
             pathStage++;
             return;
         }

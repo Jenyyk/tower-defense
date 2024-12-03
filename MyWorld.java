@@ -24,7 +24,7 @@ public class MyWorld extends World
         // last coordinates of path (end of path)
         int baseX = global_path.pathCoordinates[global_path.pathCoordinates.length - 1][0];
         int baseY = global_path.pathCoordinates[global_path.pathCoordinates.length - 1][1];
-        addObject(base, baseX, baseY); 
+        addObject(base, baseX, baseY);
         
         
         
