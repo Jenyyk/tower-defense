@@ -20,6 +20,12 @@ public class MyWorld extends World
         addObject(manager_tower, -10, -10);
         Spawner spawner = new Spawner(this, global_path, manager_tower);
         addObject(spawner, -10, -10);
+        Base base = new Base(this, manager_tower);
+        // last coordinates of path (end of path)
+        int baseX = global_path.pathCoordinates[global_path.pathCoordinates.length - 1][0];
+        int baseY = global_path.pathCoordinates[global_path.pathCoordinates.length - 1][1];
+        addObject(base, baseX, baseY); 
+        
         
         
         // important in order to detect hovering over towers

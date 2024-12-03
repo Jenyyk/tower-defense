@@ -3,16 +3,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class TowerManager extends Actor
 {
     private MyWorld world;
-    public int money = 300;
     public TowerManager(MyWorld world) {
         this.world = world;
         // create buying buttons
         world.addObject(new Button("singleShot", 200, this), 50, 750);
         world.addObject(new Button("shotgun", 300, this), 150, 750);
     }
+    public int money = 300;
+    public int health = 100;
     public void act()
     {
-        world.showText("Money: " + money, 50, 20);
+        world.showText("Money: " + money, 60, 20);
+        world.showText("Health: " + health + "%", 60, 40);
         // calls building tower while in building process
         if (buildingTower) {
             makeTower(lastType);
