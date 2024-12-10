@@ -6,4 +6,6 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=target
 comment3.target=void\ bulletHit(Enemy)
-numComments=4
+comment4.params=target\ type\ scale
+comment4.target=void\ hitEffect(Enemy,\ java.lang.String,\ int)
+numComments=5

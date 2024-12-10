@@ -37,4 +37,8 @@ public abstract class Projectile extends Actor
         this.moveSpeed += 0.05;
     }
     abstract void bulletHit(Enemy target);
+    
+    public void hitEffect(Enemy target, String type, int scale) {
+        getWorld().addObject(new HitEffect(type, scale), target.getX(), target.getY());
+    }
 }

@@ -13,14 +13,9 @@ public class Grenade extends Projectile
     }
     
     public void bulletHit(Enemy target) {
-        GreenfootImage img = new GreenfootImage("images/explosion.png");
-        img.scale(splashRange, splashRange);
-        setImage(img);
-        setRotation(0);
-        setLocation(target.getX(), target.getY());
+        hitEffect(target, "explosion", this.splashRange);
         for (Enemy enemy : getObjectsInRange(splashRange, Enemy.class)) {
             enemy.health -= this.damage;            
         }
-        Greenfoot.delay(5);
     }
 }
