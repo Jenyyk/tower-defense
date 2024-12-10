@@ -30,8 +30,7 @@ public class MyWorld extends World
         
         // important in order to detect hovering over towers
         // used for the opacity of range indicators
-        setPaintOrder(Tower.class);
-        setPaintOrder(Button.class);
+        setPaintOrder(Button.class, Tower.class);
         
         // spawns one enemy to start the game
         addObject(new Slime(global_path, manager_tower), 0, 0);
