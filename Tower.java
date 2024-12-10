@@ -15,15 +15,33 @@ abstract class Tower extends Actor
     
     // method for towers to create bullets
     // passes the target parameter to bullets for targeting
-    public void createBullet(Enemy target, float damage) {
-        Bullet bullet = new Bullet(target, damage, getX(), getY());
-        world.addObject(bullet, getX(), getY());
+    public void createBullet(Enemy target, float damage, String type) {
+        Projectile projectile;
+        switch (type) {
+            case "bullet":
+                projectile = new Bullet(target, damage, getX(), getY());
+                break;
+            case "grenade":
+                projectile = new Grenade(target, damage, getX(), getY());
+                break;
+            default:
+                return;
+        }
+        
+        world.addObject(projectile, getX(), getY());
     }
     // method for towers to scale their own images
     public void renderSelf() {
         GreenfootImage img = getImage();
         img.scale(50, 50);
         setImage(img);
+    }
+    
+    // quick function to get distance to another object
+    public double getDistanceTo(Enemy enemy) {
+        int dx = enemy.getX() - getX();
+        int dy = enemy.getY() - getY();
+        return Math.sqrt(dx * dx + dy * dy);  // Pythagorean theorem
     }
     
     // every tower needs an attack method

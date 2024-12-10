@@ -1,16 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class SingleShot extends Tower
-{
-    private int range = 140;
-    private int cooldown = 140;
-    private float damage = 80;
-    private int price = 200;
-    public SingleShot(MyWorld world) {
+public class Splash extends Tower
+{   
+    private int range = 120;
+    private int cooldown = 100;
+    private float damage = 30;
+    private int price = 400;
+    public Splash(MyWorld world) {
         super(world);
         renderSelf();
     }
-    // attacks closest enemy in range
     public void attack() {
         // gets all enemies in range
         java.util.List<Enemy> inRange = getObjectsInRange(this.range, Enemy.class);
@@ -23,11 +22,8 @@ public class SingleShot extends Tower
             }
         }
         Enemy target = (Enemy) closest;
-        // faces toward target
-        turnTowards(target.getX(), target.getY());
-        setRotation(getRotation() + 150);
         // creates a new bullet object and launches it
-        createBullet(target, this.damage, "bullet");
+        createBullet(target, this.damage, "grenade");
         sleepFor(this.cooldown);
     }
     

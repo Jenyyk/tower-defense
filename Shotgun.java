@@ -13,7 +13,7 @@ public class Shotgun extends Tower
     // attacks all enemies in range at the same time
     public void attack() {
         for (Enemy enemy : getObjectsInRange(this.range, Enemy.class)) {
-            createBullet(enemy, this.damage);
+            createBullet(enemy, this.damage, "bullet");
         }
         sleepFor(this.cooldown);
     }

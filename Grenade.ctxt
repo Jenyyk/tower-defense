@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Grenade
+comment1.params=enemy\ damage\ spawnX\ spawnY
+comment1.target=Grenade(Enemy,\ float,\ int,\ int)
+comment2.params=target
+comment2.target=void\ bulletHit(Enemy)
+numComments=3

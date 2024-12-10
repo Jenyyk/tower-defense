@@ -8,8 +8,9 @@ public class TowerManager extends Actor
         // create buying buttons
         world.addObject(new Button("singleShot", 200, this), 50, 750);
         world.addObject(new Button("shotgun", 300, this), 150, 750);
+        world.addObject(new Button("splash", 400, this), 250, 750);
     }
-    public int money = 300;
+    public int money = 3000;
     public int health = 100;
     public void act()
     {
@@ -34,6 +35,9 @@ public class TowerManager extends Actor
                 break;
             case "singleShot":
                 tower = new SingleShot(world);
+                break;
+            case "splash":
+                tower = new Splash(world);
                 break;
             default:
                 return;

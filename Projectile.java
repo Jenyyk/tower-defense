@@ -11,11 +11,6 @@ public abstract class Projectile extends Actor
         this.preciseY = (float) spawnY;
         // sets bullet damage
         this.damage = damage;
-        // renders bullet
-        GreenfootImage img = new GreenfootImage(20, 5);
-        img.setColor(Color.RED);
-        img.fill();
-        setImage(img);
     }
     private float preciseX;
     private float preciseY;
